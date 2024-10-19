@@ -1,4 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Manager App
+
+This is a simple Task Manager App built with Next.js that allows you to add, edit, delete, and mark tasks as completed. Tasks can also be dynamically sorted by priority (High, Medium, Low), and the app features server-side rendering using `getServerSideProps` for loading the initial list of tasks. The app uses a minimal UI design with responsiveness and basic styling.
+
+Project Link: https://task-manager-app-two-ruddy.vercel.app
+
+## Features
+
+- **Add Task**: Add a task with a title, description, and priority (High, Medium, Low).
+- **Edit Task**: Edit the title, description, or priority of existing tasks.
+- **Delete Task**: Remove tasks from the list.
+- **Mark as Completed**: Toggle tasks between completed and incomplete states.
+- **Search**: Filter tasks by title or description.
+- **Sort by Priority**: Tasks are dynamically sorted by priority, with High priority tasks at the top, followed by Medium, and then Low.
+- **Responsive UI**: The app is fully responsive with basic styling using flexbox and CSS.
+- **Server-Side Rendering**: Initial task list is loaded using Next.js' `getServerSideProps`.
+
+## Approach for Sorting Tasks by Priority
+
+The sorting of tasks by priority is handled dynamically in the application. Here's a brief explanation of how the sorting logic works:
+
+1. **Priority Levels**:
+   - Each task has a priority: `High`, `Medium`, or `Low`.
+   - The priority levels are assigned a weight: `High` = 1, `Medium` = 2, `Low` = 3.
+
+2. **Sorting Logic**:
+   - The tasks are sorted based on these weights so that tasks with the highest priority appear first. The sorting is done using JavaScript’s `Array.prototype.sort()` function:
+   ```javascript
+   const sortedTasks = tasks.sort((a, b) => {
+     const priorities = { high: 1, medium: 2, low: 3 };
+     return priorities[a.priority] - priorities[b.priority];
+   });
+## Additional Features
+1. Local Storage Persistence: The app uses localStorage to persist tasks across page reloads. If tasks are added, edited, or deleted, the task list is automatically updated in localStorage.
+2. Search Bar: A simple search bar is provided to filter tasks by title or description, allowing you to quickly find tasks based on a keyword.
 
 ## Getting Started
 
